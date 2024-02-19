@@ -86,16 +86,21 @@ public class OrderRepository {
                     maxTime=orderRepo.get(orderId).getDeliveryTime();
             }
             if(maxTime!=Integer.MIN_VALUE){
-                int hr=maxTime%60;
-                int min=maxTime/60;
+                int hr=maxTime/60;
+                int min=maxTime%60;
                 if(hr>9)
                     time=hr+":";
-                else
-                    time="0"+hr+":";
+                else{
+                    time="0";
+                    time=time+hr;
+                    time=time+":";
+                }
                 if(min>9)
-                    time+=min+"";
-                else
-                    time=time+"0"+min;
+                    time=time+min;
+                else{
+                    time=time+"0";
+                    time=time+min;
+                }
             }
         }
         return time;
