@@ -1,5 +1,6 @@
 package com.driver;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,6 +13,8 @@ public class OrderRepository {
     HashMap<String,DeliveryPartner> partnerRepo; //DeliveryPartnerId--DeliveryPartner
     HashMap<String, ArrayList<String>> partnerOrderRepo; //PartnerId--OrderId
     HashMap<String,String> orderPartnerRepo; //OrderId--PartnerId
+
+    @Autowired
     public OrderRepository(){
         orderRepo=new HashMap<>();
         partnerRepo=new HashMap<>();
@@ -117,19 +120,21 @@ public class OrderRepository {
         }
     }
     public void deleteOrderById(String orderId){
-        if(orderRepo.containsKey(orderId)){
+      //  if(orderRepo.containsKey(orderId)){
             orderRepo.remove(orderId);
             String partnerId=null;
             if(orderPartnerRepo.containsKey(orderId)){
                 partnerId=orderPartnerRepo.get(orderId);
                 DeliveryPartner dp=partnerRepo.get(partnerId);
+            //    System.out.println("Before updating numberof orders "+dp);
                 dp.setNumberOfOrders(dp.getNumberOfOrders()-1);
+            //    System.out.println("After updating numberof orders "+dp);
                 orderPartnerRepo.remove(orderId);
                 ArrayList<String> temp=partnerOrderRepo.get(partnerId);
-                temp.remove(partnerId);
+                temp.remove(orderId);
                 if(temp.isEmpty())
                     partnerOrderRepo.remove(partnerId);
             }
-        }
+    //    }
     }
 }
