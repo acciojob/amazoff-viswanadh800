@@ -69,7 +69,7 @@ public class OrderRepository {
         int convertedTime=0;
         String givenTime[]=time.split(":");
         convertedTime=Integer.parseInt(givenTime[0])*60+Integer.parseInt(givenTime[1]);
-        if(partnerOrderRepo.containsKey(partnerId){
+        if(partnerOrderRepo.containsKey(partnerId)){
             for(String orderId : partnerOrderRepo.get(partnerId)){
                 if(orderRepo.get(orderId).getDeliveryTime()>convertedTime)
                     count++;

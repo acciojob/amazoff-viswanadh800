@@ -23,7 +23,7 @@ public class OrderService {
     }
 
     public Order getOrderById(String orderId) {
-        orderRepository.getOrderById(orderId);
+        return orderRepository.getOrderById(orderId);
     }
 
     public DeliveryPartner getPartnerById(String partnerId) {
@@ -58,6 +58,6 @@ public class OrderService {
         orderRepository.deletePartnerById(partnerId);
     }
     public void deleteOrderById(String orderId){
-        orderRepository.deleteOrderById();
+        orderRepository.deleteOrderById(orderId);
     }
 }
