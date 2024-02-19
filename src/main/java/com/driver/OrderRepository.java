@@ -9,18 +9,18 @@ import java.util.List;
 
 @Repository
 public class OrderRepository {
-    HashMap<String,Order> orderRepo; //OrderId--Order
-    HashMap<String,DeliveryPartner> partnerRepo; //DeliveryPartnerId--DeliveryPartner
-    HashMap<String, ArrayList<String>> partnerOrderRepo; //PartnerId--OrderId
-    HashMap<String,String> orderPartnerRepo; //OrderId--PartnerId
+    private HashMap<String,Order> orderRepo=new HashMap<>(); //OrderId--Order
+    private HashMap<String,DeliveryPartner> partnerRepo=new HashMap<>(); //DeliveryPartnerId--DeliveryPartner
+    private HashMap<String, ArrayList<String>> partnerOrderRepo=new HashMap<>(); //PartnerId--OrderId
+    private HashMap<String,String> orderPartnerRepo=new HashMap<>(); //OrderId--PartnerId
 
-    @Autowired
-    public OrderRepository(){
-        orderRepo=new HashMap<>();
-        partnerRepo=new HashMap<>();
-        partnerOrderRepo=new HashMap<>();
-        orderPartnerRepo=new HashMap<>();
-    }
+//    @Autowired
+//    public OrderRepository(){
+//        orderRepo=new HashMap<>();
+//        partnerRepo=new HashMap<>();
+//        partnerOrderRepo=new HashMap<>();
+//        orderPartnerRepo=new HashMap<>();
+//    }
     public void addOrder(Order order){
         orderRepo.put(order.getId(),order);
     }
